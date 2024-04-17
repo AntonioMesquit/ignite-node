@@ -24,7 +24,7 @@ export async function mealsRoutes(app: FastifyInstance){
       name,
       description,
       is_on_diet: isDiet,
-      date: date.getTime(),
+      date: knex.raw('?', [date]),
       user_id: request.user?.id,
     })
  return reply.status(201).send()
